@@ -2,9 +2,8 @@ import streamlit as st
 from streamlit_lottie import st_lottie
 import requests
 
-from apps import chap1
+from apps import chap1, chap2
 from multiapp import MultiApp
-
 
 st.title("LIFE SCIENCES")
 st.write("by RaguRam")
@@ -24,6 +23,7 @@ app = MultiApp()
 
 # Add all your application here
 app.add_app("chapter1", chap1.app)
+app.add_app("chapter2", chap2.app)
 
 # The main app
 app.run()
