@@ -1,19 +1,18 @@
 import streamlit as st
-from apps import chap1
-from multiapp import MultiApp
+from streamlit_lottie import st_lottie
+import requests
 
 st.title("LIFE SCIENCES")
 st.write("by RaguRam")
 
 
-app = MultiApp()
+def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
 
-st.markdown("""
-This app summarises the book LifeSciences
-""")
 
-# Add all your application here
-app.add_app("Chapter1", chap1.app)
+lottie_lifesciences = load_lottieurl('https://assets1.lottiefiles.com/packages/lf20_vtuepexz.json')
 
-# The main app
-app.run()
+st_lottie(lottie_lifesciences, height=200)
